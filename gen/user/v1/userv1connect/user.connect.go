@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	v1 "github.com/bufbuild/buf-examples/gen/user/v1"
+	v1 "github.com/go-list-templ/proto/gen/user/v1"
 	http "net/http"
 	strings "strings"
 )

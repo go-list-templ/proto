@@ -7,7 +7,7 @@
 package userv1
 
 import (
-	_type "github.com/bufbuild/buf-examples/gen/google/type"
+	_type "github.com/go-list-templ/proto/gen/google/type"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -307,8 +307,8 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\vUserService\x12A\n" +
 	"\bAllUsers\x12\x18.user.v1.AllUsersRequest\x1a\x19.user.v1.AllUsersResponse\"\x00\x12G\n" +
 	"\n" +
-	"CreateUser\x12\x1a.user.v1.CreateUserRequest\x1a\x1b.user.v1.CreateUserResponse\"\x00B\x8a\x01\n" +
-	"\vcom.user.v1B\tUserProtoP\x01Z3github.com/bufbuild/buf-examples/gen/user/v1;userv1\xa2\x02\x03UXX\xaa\x02\aUser.V1\xca\x02\aUser\\V1\xe2\x02\x13User\\V1\\GPBMetadata\xea\x02\bUser::V1b\x06proto3"
+	"CreateUser\x12\x1a.user.v1.CreateUserRequest\x1a\x1b.user.v1.CreateUserResponse\"\x00B\x88\x01\n" +
+	"\vcom.user.v1B\tUserProtoP\x01Z1github.com/go-list-templ/proto/gen/user/v1;userv1\xa2\x02\x03UXX\xaa\x02\aUser.V1\xca\x02\aUser\\V1\xe2\x02\x13User\\V1\\GPBMetadata\xea\x02\bUser::V1b\x06proto3"
 
 var (
 	file_user_v1_user_proto_rawDescOnce sync.Once
