@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package user.v1;
+
+import "google/type/timestamp.proto";
+
+message User {
+  uint32 id = 1;
+  string username = 2;
+  string email = 3;
+  google.type.Timestamp created_at = 4;
+  google.type.Timestamp updated_at = 5;
+}
+
+message AllUsersRequest {}
+
+message AllUsersResponse {
+  repeated User users = 1;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+service UserService {
+  rpc AllUsers(AllUsersRequest) returns (AllUsersResponse) {}
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+}

@@ -1,0 +1,10 @@
+version: v2
+name: buf.build/proto/api
+lint:
+  use:
+    - STANDARD
+  ignore:
+    - google
+breaking:
+  use:
+    - FILE
