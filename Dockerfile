@@ -1,13 +1,15 @@
-FROM bufbuild/buf:latest
+FROM golang:alpine
 
-COPY . /app
+RUN apk add protoc protobuf-dev
 
-# Install protoc.
-RUN apk add --no-cache protobuf-dev
+# Устанавливаем protoc-gen-go с поддержкой модулей
+ENV GO111MODULE=on
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && \
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
-# Verify installations.
-RUN buf --version && \
-    protoc --version
+WORKDIR /src
 
+COPY generate.sh /generate.sh
+RUN chmod +x /generate.sh
 
-WORKDIR /app
+ENTRYPOINT ["/generate.sh"]
