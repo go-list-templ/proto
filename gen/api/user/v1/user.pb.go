@@ -303,9 +303,10 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\";\n" +
 	"\x12CreateUserResponse\x12%\n" +
-	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user2\xa9\x01\n" +
-	"\vUserService\x12I\n" +
-	"\bAllUsers\x12\x1c.api.user.v1.AllUsersRequest\x1a\x1d.api.user.v1.AllUsersResponse\"\x00\x12O\n" +
+	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user2]\n" +
+	"\x10UserQueryService\x12I\n" +
+	"\bAllUsers\x12\x1c.api.user.v1.AllUsersRequest\x1a\x1d.api.user.v1.AllUsersResponse\"\x002e\n" +
+	"\x12UserCommandService\x12O\n" +
 	"\n" +
 	"CreateUser\x12\x1e.api.user.v1.CreateUserRequest\x1a\x1f.api.user.v1.CreateUserResponse\"\x00B0Z.github.com/go-list-templ/proto/gen/api/user/v1b\x06proto3"
 
@@ -335,10 +336,10 @@ var file_user_v1_user_proto_depIdxs = []int32{
 	5, // 1: api.user.v1.User.updated_at:type_name -> google.protobuf.Timestamp
 	0, // 2: api.user.v1.AllUsersResponse.users:type_name -> api.user.v1.User
 	0, // 3: api.user.v1.CreateUserResponse.user:type_name -> api.user.v1.User
-	1, // 4: api.user.v1.UserService.AllUsers:input_type -> api.user.v1.AllUsersRequest
-	3, // 5: api.user.v1.UserService.CreateUser:input_type -> api.user.v1.CreateUserRequest
-	2, // 6: api.user.v1.UserService.AllUsers:output_type -> api.user.v1.AllUsersResponse
-	4, // 7: api.user.v1.UserService.CreateUser:output_type -> api.user.v1.CreateUserResponse
+	1, // 4: api.user.v1.UserQueryService.AllUsers:input_type -> api.user.v1.AllUsersRequest
+	3, // 5: api.user.v1.UserCommandService.CreateUser:input_type -> api.user.v1.CreateUserRequest
+	2, // 6: api.user.v1.UserQueryService.AllUsers:output_type -> api.user.v1.AllUsersResponse
+	4, // 7: api.user.v1.UserCommandService.CreateUser:output_type -> api.user.v1.CreateUserResponse
 	6, // [6:8] is the sub-list for method output_type
 	4, // [4:6] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -359,7 +360,7 @@ func file_user_v1_user_proto_init() {
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_user_v1_user_proto_goTypes,
 		DependencyIndexes: file_user_v1_user_proto_depIdxs,

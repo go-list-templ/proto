@@ -19,139 +19,203 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_AllUsers_FullMethodName   = "/api.user.v1.UserService/AllUsers"
-	UserService_CreateUser_FullMethodName = "/api.user.v1.UserService/CreateUser"
+	UserQueryService_AllUsers_FullMethodName = "/api.user.v1.UserQueryService/AllUsers"
 )
 
-// UserServiceClient is the client API for UserService service.
+// UserQueryServiceClient is the client API for UserQueryService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UserServiceClient interface {
+type UserQueryServiceClient interface {
 	AllUsers(ctx context.Context, in *AllUsersRequest, opts ...grpc.CallOption) (*AllUsersResponse, error)
-	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 }
 
-type userServiceClient struct {
+type userQueryServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
-	return &userServiceClient{cc}
+func NewUserQueryServiceClient(cc grpc.ClientConnInterface) UserQueryServiceClient {
+	return &userQueryServiceClient{cc}
 }
 
-func (c *userServiceClient) AllUsers(ctx context.Context, in *AllUsersRequest, opts ...grpc.CallOption) (*AllUsersResponse, error) {
+func (c *userQueryServiceClient) AllUsers(ctx context.Context, in *AllUsersRequest, opts ...grpc.CallOption) (*AllUsersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AllUsersResponse)
-	err := c.cc.Invoke(ctx, UserService_AllUsers_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, UserQueryService_AllUsers_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateUserResponse)
-	err := c.cc.Invoke(ctx, UserService_CreateUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// UserServiceServer is the server API for UserService service.
-// All implementations must embed UnimplementedUserServiceServer
+// UserQueryServiceServer is the server API for UserQueryService service.
+// All implementations must embed UnimplementedUserQueryServiceServer
 // for forward compatibility.
-type UserServiceServer interface {
+type UserQueryServiceServer interface {
 	AllUsers(context.Context, *AllUsersRequest) (*AllUsersResponse, error)
-	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
-	mustEmbedUnimplementedUserServiceServer()
+	mustEmbedUnimplementedUserQueryServiceServer()
 }
 
-// UnimplementedUserServiceServer must be embedded to have
+// UnimplementedUserQueryServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedUserServiceServer struct{}
+type UnimplementedUserQueryServiceServer struct{}
 
-func (UnimplementedUserServiceServer) AllUsers(context.Context, *AllUsersRequest) (*AllUsersResponse, error) {
+func (UnimplementedUserQueryServiceServer) AllUsers(context.Context, *AllUsersRequest) (*AllUsersResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AllUsers not implemented")
 }
-func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method CreateUser not implemented")
-}
-func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
-func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
+func (UnimplementedUserQueryServiceServer) mustEmbedUnimplementedUserQueryServiceServer() {}
+func (UnimplementedUserQueryServiceServer) testEmbeddedByValue()                          {}
 
-// UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UserServiceServer will
+// UnsafeUserQueryServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserQueryServiceServer will
 // result in compilation errors.
-type UnsafeUserServiceServer interface {
-	mustEmbedUnimplementedUserServiceServer()
+type UnsafeUserQueryServiceServer interface {
+	mustEmbedUnimplementedUserQueryServiceServer()
 }
 
-func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) {
-	// If the following call panics, it indicates UnimplementedUserServiceServer was
+func RegisterUserQueryServiceServer(s grpc.ServiceRegistrar, srv UserQueryServiceServer) {
+	// If the following call panics, it indicates UnimplementedUserQueryServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&UserService_ServiceDesc, srv)
+	s.RegisterService(&UserQueryService_ServiceDesc, srv)
 }
 
-func _UserService_AllUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserQueryService_AllUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AllUsersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).AllUsers(ctx, in)
+		return srv.(UserQueryServiceServer).AllUsers(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_AllUsers_FullMethodName,
+		FullMethod: UserQueryService_AllUsers_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).AllUsers(ctx, req.(*AllUsersRequest))
+		return srv.(UserQueryServiceServer).AllUsers(ctx, req.(*AllUsersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+// UserQueryService_ServiceDesc is the grpc.ServiceDesc for UserQueryService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var UserQueryService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "api.user.v1.UserQueryService",
+	HandlerType: (*UserQueryServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "AllUsers",
+			Handler:    _UserQueryService_AllUsers_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "user/v1/user.proto",
+}
+
+const (
+	UserCommandService_CreateUser_FullMethodName = "/api.user.v1.UserCommandService/CreateUser"
+)
+
+// UserCommandServiceClient is the client API for UserCommandService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type UserCommandServiceClient interface {
+	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
+}
+
+type userCommandServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewUserCommandServiceClient(cc grpc.ClientConnInterface) UserCommandServiceClient {
+	return &userCommandServiceClient{cc}
+}
+
+func (c *userCommandServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateUserResponse)
+	err := c.cc.Invoke(ctx, UserCommandService_CreateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// UserCommandServiceServer is the server API for UserCommandService service.
+// All implementations must embed UnimplementedUserCommandServiceServer
+// for forward compatibility.
+type UserCommandServiceServer interface {
+	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
+	mustEmbedUnimplementedUserCommandServiceServer()
+}
+
+// UnimplementedUserCommandServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedUserCommandServiceServer struct{}
+
+func (UnimplementedUserCommandServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateUser not implemented")
+}
+func (UnimplementedUserCommandServiceServer) mustEmbedUnimplementedUserCommandServiceServer() {}
+func (UnimplementedUserCommandServiceServer) testEmbeddedByValue()                            {}
+
+// UnsafeUserCommandServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserCommandServiceServer will
+// result in compilation errors.
+type UnsafeUserCommandServiceServer interface {
+	mustEmbedUnimplementedUserCommandServiceServer()
+}
+
+func RegisterUserCommandServiceServer(s grpc.ServiceRegistrar, srv UserCommandServiceServer) {
+	// If the following call panics, it indicates UnimplementedUserCommandServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&UserCommandService_ServiceDesc, srv)
+}
+
+func _UserCommandService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).CreateUser(ctx, in)
+		return srv.(UserCommandServiceServer).CreateUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_CreateUser_FullMethodName,
+		FullMethod: UserCommandService_CreateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
+		return srv.(UserCommandServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
+// UserCommandService_ServiceDesc is the grpc.ServiceDesc for UserCommandService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var UserService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "api.user.v1.UserService",
-	HandlerType: (*UserServiceServer)(nil),
+var UserCommandService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "api.user.v1.UserCommandService",
+	HandlerType: (*UserCommandServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AllUsers",
-			Handler:    _UserService_AllUsers_Handler,
-		},
-		{
 			MethodName: "CreateUser",
-			Handler:    _UserService_CreateUser_Handler,
+			Handler:    _UserCommandService_CreateUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
