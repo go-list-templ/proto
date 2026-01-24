@@ -30,10 +30,7 @@ message CreateUserResponse {
   User user = 1;
 }
 
-service UserQueryService {
+service UserService {
   rpc AllUsers(AllUsersRequest) returns (AllUsersResponse) {}
-}
-
-service UserCommandService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
 }
