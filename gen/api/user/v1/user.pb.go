@@ -106,7 +106,7 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-type ListUsersRequest struct {
+type ListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PageSize      int64                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -114,20 +114,20 @@ type ListUsersRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListUsersRequest) Reset() {
-	*x = ListUsersRequest{}
+func (x *ListRequest) Reset() {
+	*x = ListRequest{}
 	mi := &file_user_v1_user_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListUsersRequest) String() string {
+func (x *ListRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListUsersRequest) ProtoMessage() {}
+func (*ListRequest) ProtoMessage() {}
 
-func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
+func (x *ListRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_v1_user_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -139,26 +139,26 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
-func (*ListUsersRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListRequest.ProtoReflect.Descriptor instead.
+func (*ListRequest) Descriptor() ([]byte, []int) {
 	return file_user_v1_user_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ListUsersRequest) GetPageSize() int64 {
+func (x *ListRequest) GetPageSize() int64 {
 	if x != nil {
 		return x.PageSize
 	}
 	return 0
 }
 
-func (x *ListUsersRequest) GetPageToken() string {
+func (x *ListRequest) GetPageToken() string {
 	if x != nil {
 		return x.PageToken
 	}
 	return ""
 }
 
-type ListUsersResponse struct {
+type ListResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
@@ -166,20 +166,20 @@ type ListUsersResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListUsersResponse) Reset() {
-	*x = ListUsersResponse{}
+func (x *ListResponse) Reset() {
+	*x = ListResponse{}
 	mi := &file_user_v1_user_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListUsersResponse) String() string {
+func (x *ListResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListUsersResponse) ProtoMessage() {}
+func (*ListResponse) ProtoMessage() {}
 
-func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
+func (x *ListResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_user_v1_user_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -191,26 +191,26 @@ func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
-func (*ListUsersResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListResponse.ProtoReflect.Descriptor instead.
+func (*ListResponse) Descriptor() ([]byte, []int) {
 	return file_user_v1_user_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListUsersResponse) GetUsers() []*User {
+func (x *ListResponse) GetUsers() []*User {
 	if x != nil {
 		return x.Users
 	}
 	return nil
 }
 
-func (x *ListUsersResponse) GetNextPageToken() string {
+func (x *ListResponse) GetNextPageToken() string {
 	if x != nil {
 		return x.NextPageToken
 	}
 	return ""
 }
 
-type CreateUserRequest struct {
+type CreateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
@@ -218,20 +218,20 @@ type CreateUserRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateUserRequest) Reset() {
-	*x = CreateUserRequest{}
+func (x *CreateRequest) Reset() {
+	*x = CreateRequest{}
 	mi := &file_user_v1_user_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateUserRequest) String() string {
+func (x *CreateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateUserRequest) ProtoMessage() {}
+func (*CreateRequest) ProtoMessage() {}
 
-func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_v1_user_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -243,46 +243,46 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
-func (*CreateUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateRequest.ProtoReflect.Descriptor instead.
+func (*CreateRequest) Descriptor() ([]byte, []int) {
 	return file_user_v1_user_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *CreateUserRequest) GetName() string {
+func (x *CreateRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *CreateUserRequest) GetEmail() string {
+func (x *CreateRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-type CreateUserResponse struct {
+type CreateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateUserResponse) Reset() {
-	*x = CreateUserResponse{}
+func (x *CreateResponse) Reset() {
+	*x = CreateResponse{}
 	mi := &file_user_v1_user_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateUserResponse) String() string {
+func (x *CreateResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateUserResponse) ProtoMessage() {}
+func (*CreateResponse) ProtoMessage() {}
 
-func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_user_v1_user_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -294,12 +294,12 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
-func (*CreateUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
+func (*CreateResponse) Descriptor() ([]byte, []int) {
 	return file_user_v1_user_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateUserResponse) GetUser() *User {
+func (x *CreateResponse) GetUser() *User {
 	if x != nil {
 		return x.User
 	}
@@ -319,22 +319,22 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"N\n" +
-	"\x10ListUsersRequest\x12\x1b\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"I\n" +
+	"\vListRequest\x12\x1b\n" +
 	"\tpage_size\x18\x01 \x01(\x03R\bpageSize\x12\x1d\n" +
 	"\n" +
-	"page_token\x18\x02 \x01(\tR\tpageToken\"d\n" +
-	"\x11ListUsersResponse\x12'\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"_\n" +
+	"\fListResponse\x12'\n" +
 	"\x05users\x18\x01 \x03(\v2\x11.api.user.v1.UserR\x05users\x12&\n" +
-	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"=\n" +
-	"\x11CreateUserRequest\x12\x12\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"9\n" +
+	"\rCreateRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\";\n" +
-	"\x12CreateUserResponse\x12%\n" +
-	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user2\xa3\x01\n" +
-	"\vUserService\x12G\n" +
-	"\x04List\x12\x1d.api.user.v1.ListUsersRequest\x1a\x1e.api.user.v1.ListUsersResponse\"\x00\x12K\n" +
-	"\x06Create\x12\x1e.api.user.v1.CreateUserRequest\x1a\x1f.api.user.v1.CreateUserResponse\"\x00B0Z.github.com/go-list-templ/proto/gen/api/user/v1b\x06proto3"
+	"\x05email\x18\x02 \x01(\tR\x05email\"7\n" +
+	"\x0eCreateResponse\x12%\n" +
+	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user2\x91\x01\n" +
+	"\vUserService\x12=\n" +
+	"\x04List\x12\x18.api.user.v1.ListRequest\x1a\x19.api.user.v1.ListResponse\"\x00\x12C\n" +
+	"\x06Create\x12\x1a.api.user.v1.CreateRequest\x1a\x1b.api.user.v1.CreateResponse\"\x00B0Z.github.com/go-list-templ/proto/gen/api/user/v1b\x06proto3"
 
 var (
 	file_user_v1_user_proto_rawDescOnce sync.Once
@@ -351,21 +351,21 @@ func file_user_v1_user_proto_rawDescGZIP() []byte {
 var file_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_user_v1_user_proto_goTypes = []any{
 	(*User)(nil),                  // 0: api.user.v1.User
-	(*ListUsersRequest)(nil),      // 1: api.user.v1.ListUsersRequest
-	(*ListUsersResponse)(nil),     // 2: api.user.v1.ListUsersResponse
-	(*CreateUserRequest)(nil),     // 3: api.user.v1.CreateUserRequest
-	(*CreateUserResponse)(nil),    // 4: api.user.v1.CreateUserResponse
+	(*ListRequest)(nil),           // 1: api.user.v1.ListRequest
+	(*ListResponse)(nil),          // 2: api.user.v1.ListResponse
+	(*CreateRequest)(nil),         // 3: api.user.v1.CreateRequest
+	(*CreateResponse)(nil),        // 4: api.user.v1.CreateResponse
 	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
 }
 var file_user_v1_user_proto_depIdxs = []int32{
 	5, // 0: api.user.v1.User.created_at:type_name -> google.protobuf.Timestamp
 	5, // 1: api.user.v1.User.updated_at:type_name -> google.protobuf.Timestamp
-	0, // 2: api.user.v1.ListUsersResponse.users:type_name -> api.user.v1.User
-	0, // 3: api.user.v1.CreateUserResponse.user:type_name -> api.user.v1.User
-	1, // 4: api.user.v1.UserService.List:input_type -> api.user.v1.ListUsersRequest
-	3, // 5: api.user.v1.UserService.Create:input_type -> api.user.v1.CreateUserRequest
-	2, // 6: api.user.v1.UserService.List:output_type -> api.user.v1.ListUsersResponse
-	4, // 7: api.user.v1.UserService.Create:output_type -> api.user.v1.CreateUserResponse
+	0, // 2: api.user.v1.ListResponse.users:type_name -> api.user.v1.User
+	0, // 3: api.user.v1.CreateResponse.user:type_name -> api.user.v1.User
+	1, // 4: api.user.v1.UserService.List:input_type -> api.user.v1.ListRequest
+	3, // 5: api.user.v1.UserService.Create:input_type -> api.user.v1.CreateRequest
+	2, // 6: api.user.v1.UserService.List:output_type -> api.user.v1.ListResponse
+	4, // 7: api.user.v1.UserService.Create:output_type -> api.user.v1.CreateResponse
 	6, // [6:8] is the sub-list for method output_type
 	4, // [4:6] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
