@@ -15,10 +15,14 @@ message User {
   google.protobuf.Timestamp updated_at = 6;
 }
 
-message AllUsersRequest {}
+message ListUsersRequest {
+  int64 page_size = 1;
+  string page_token = 2;
+}
 
-message AllUsersResponse {
+message ListUsersResponse {
   repeated User users = 1;
+  string next_page_token = 2;
 }
 
 message CreateUserRequest {
@@ -31,6 +35,6 @@ message CreateUserResponse {
 }
 
 service UserService {
-  rpc AllUsers(AllUsersRequest) returns (AllUsersResponse) {}
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+  rpc List(ListUsersRequest) returns (ListUsersResponse) {}
+  rpc Create(CreateUserRequest) returns (CreateUserResponse) {}
 }
