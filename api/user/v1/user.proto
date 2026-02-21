@@ -16,7 +16,6 @@ message User {
 }
 
 message ListRequest {
-  int64 page_size = 1;
   string page_token = 2;
 }
 
