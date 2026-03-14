@@ -21,10 +21,10 @@ jobs:
     name: check build proto
     runs-on: ubuntu-latest
     steps:
-      - name: build proto
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: build proto
         run: |
           make gen
 
