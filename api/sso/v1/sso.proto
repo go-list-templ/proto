@@ -4,8 +4,6 @@ package api.sso.v1;
 
 option go_package = "github.com/go-list-templ/proto/gen/api/sso/v1";
 
-import "google/protobuf/timestamp.proto";
-
 message RegisterRequest {
   string email = 1;
   string password = 2;
