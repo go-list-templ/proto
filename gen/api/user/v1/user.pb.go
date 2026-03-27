@@ -25,7 +25,7 @@ const (
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	Avatar        string                 `protobuf:"bytes,4,opt,name=avatar,proto3" json:"avatar,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -72,8 +72,8 @@ func (x *User) GetId() string {
 }
 
 func (x *User) GetName() string {
-	if x != nil {
-		return x.Name
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
@@ -298,20 +298,109 @@ func (x *CreateResponse) GetUser() *User {
 	return nil
 }
 
+type GetByEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetByEmailRequest) Reset() {
+	*x = GetByEmailRequest{}
+	mi := &file_user_v1_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetByEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetByEmailRequest) ProtoMessage() {}
+
+func (x *GetByEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_v1_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetByEmailRequest.ProtoReflect.Descriptor instead.
+func (*GetByEmailRequest) Descriptor() ([]byte, []int) {
+	return file_user_v1_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetByEmailRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type GetByEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetByEmailResponse) Reset() {
+	*x = GetByEmailResponse{}
+	mi := &file_user_v1_user_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetByEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetByEmailResponse) ProtoMessage() {}
+
+func (x *GetByEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_v1_user_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetByEmailResponse.ProtoReflect.Descriptor instead.
+func (*GetByEmailResponse) Descriptor() ([]byte, []int) {
+	return file_user_v1_user_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetByEmailResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 var File_user_v1_user_proto protoreflect.FileDescriptor
 
 const file_user_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12user/v1/user.proto\x12\vapi.user.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xce\x01\n" +
+	"\x12user/v1/user.proto\x12\vapi.user.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdc\x01\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x16\n" +
 	"\x06avatar\x18\x04 \x01(\tR\x06avatar\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\",\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\a\n" +
+	"\x05_name\",\n" +
 	"\vListRequest\x12\x1d\n" +
 	"\n" +
 	"page_token\x18\x02 \x01(\tR\tpageToken\"_\n" +
@@ -322,10 +411,16 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\"7\n" +
 	"\x0eCreateResponse\x12%\n" +
-	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user2\x91\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user\")\n" +
+	"\x11GetByEmailRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\";\n" +
+	"\x12GetByEmailResponse\x12%\n" +
+	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user2\xe2\x01\n" +
 	"\vUserService\x12=\n" +
 	"\x04List\x12\x18.api.user.v1.ListRequest\x1a\x19.api.user.v1.ListResponse\"\x00\x12C\n" +
-	"\x06Create\x12\x1a.api.user.v1.CreateRequest\x1a\x1b.api.user.v1.CreateResponse\"\x00B0Z.github.com/go-list-templ/proto/gen/api/user/v1b\x06proto3"
+	"\x06Create\x12\x1a.api.user.v1.CreateRequest\x1a\x1b.api.user.v1.CreateResponse\"\x00\x12O\n" +
+	"\n" +
+	"GetByEmail\x12\x1e.api.user.v1.GetByEmailRequest\x1a\x1f.api.user.v1.GetByEmailResponse\"\x00B0Z.github.com/go-list-templ/proto/gen/api/user/v1b\x06proto3"
 
 var (
 	file_user_v1_user_proto_rawDescOnce sync.Once
@@ -339,29 +434,34 @@ func file_user_v1_user_proto_rawDescGZIP() []byte {
 	return file_user_v1_user_proto_rawDescData
 }
 
-var file_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_user_v1_user_proto_goTypes = []any{
 	(*User)(nil),                  // 0: api.user.v1.User
 	(*ListRequest)(nil),           // 1: api.user.v1.ListRequest
 	(*ListResponse)(nil),          // 2: api.user.v1.ListResponse
 	(*CreateRequest)(nil),         // 3: api.user.v1.CreateRequest
 	(*CreateResponse)(nil),        // 4: api.user.v1.CreateResponse
-	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(*GetByEmailRequest)(nil),     // 5: api.user.v1.GetByEmailRequest
+	(*GetByEmailResponse)(nil),    // 6: api.user.v1.GetByEmailResponse
+	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
 }
 var file_user_v1_user_proto_depIdxs = []int32{
-	5, // 0: api.user.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	5, // 1: api.user.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	7, // 0: api.user.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	7, // 1: api.user.v1.User.updated_at:type_name -> google.protobuf.Timestamp
 	0, // 2: api.user.v1.ListResponse.users:type_name -> api.user.v1.User
 	0, // 3: api.user.v1.CreateResponse.user:type_name -> api.user.v1.User
-	1, // 4: api.user.v1.UserService.List:input_type -> api.user.v1.ListRequest
-	3, // 5: api.user.v1.UserService.Create:input_type -> api.user.v1.CreateRequest
-	2, // 6: api.user.v1.UserService.List:output_type -> api.user.v1.ListResponse
-	4, // 7: api.user.v1.UserService.Create:output_type -> api.user.v1.CreateResponse
-	6, // [6:8] is the sub-list for method output_type
-	4, // [4:6] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	0, // 4: api.user.v1.GetByEmailResponse.user:type_name -> api.user.v1.User
+	1, // 5: api.user.v1.UserService.List:input_type -> api.user.v1.ListRequest
+	3, // 6: api.user.v1.UserService.Create:input_type -> api.user.v1.CreateRequest
+	5, // 7: api.user.v1.UserService.GetByEmail:input_type -> api.user.v1.GetByEmailRequest
+	2, // 8: api.user.v1.UserService.List:output_type -> api.user.v1.ListResponse
+	4, // 9: api.user.v1.UserService.Create:output_type -> api.user.v1.CreateResponse
+	6, // 10: api.user.v1.UserService.GetByEmail:output_type -> api.user.v1.GetByEmailResponse
+	8, // [8:11] is the sub-list for method output_type
+	5, // [5:8] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_user_v1_user_proto_init() }
@@ -369,13 +469,14 @@ func file_user_v1_user_proto_init() {
 	if File_user_v1_user_proto != nil {
 		return
 	}
+	file_user_v1_user_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_v1_user_proto_rawDesc), len(file_user_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
