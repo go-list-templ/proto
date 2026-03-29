@@ -42,8 +42,18 @@ message GetByEmailResponse {
   User user = 1;
 }
 
+message VerifyCredRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message VerifyCredResponse {
+  string user_id = 1;
+}
+
 service UserService {
   rpc List(ListRequest) returns (ListResponse) {}
   rpc Create(CreateRequest) returns (CreateResponse) {}
   rpc GetByEmail(GetByEmailRequest) returns (GetByEmailResponse) {}
+  rpc VerifyCred(VerifyCredRequest) returns (VerifyCredResponse) {}
 }

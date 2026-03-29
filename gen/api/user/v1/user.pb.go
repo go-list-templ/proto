@@ -394,6 +394,102 @@ func (x *GetByEmailResponse) GetUser() *User {
 	return nil
 }
 
+type VerifyCredRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyCredRequest) Reset() {
+	*x = VerifyCredRequest{}
+	mi := &file_user_v1_user_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyCredRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyCredRequest) ProtoMessage() {}
+
+func (x *VerifyCredRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_v1_user_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyCredRequest.ProtoReflect.Descriptor instead.
+func (*VerifyCredRequest) Descriptor() ([]byte, []int) {
+	return file_user_v1_user_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *VerifyCredRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *VerifyCredRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+type VerifyCredResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyCredResponse) Reset() {
+	*x = VerifyCredResponse{}
+	mi := &file_user_v1_user_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyCredResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyCredResponse) ProtoMessage() {}
+
+func (x *VerifyCredResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_v1_user_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyCredResponse.ProtoReflect.Descriptor instead.
+func (*VerifyCredResponse) Descriptor() ([]byte, []int) {
+	return file_user_v1_user_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *VerifyCredResponse) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
 var File_user_v1_user_proto protoreflect.FileDescriptor
 
 const file_user_v1_user_proto_rawDesc = "" +
@@ -425,12 +521,19 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\x11GetByEmailRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\";\n" +
 	"\x12GetByEmailResponse\x12%\n" +
-	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user2\xe2\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\x11.api.user.v1.UserR\x04user\"E\n" +
+	"\x11VerifyCredRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"-\n" +
+	"\x12VerifyCredResponse\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId2\xb3\x02\n" +
 	"\vUserService\x12=\n" +
 	"\x04List\x12\x18.api.user.v1.ListRequest\x1a\x19.api.user.v1.ListResponse\"\x00\x12C\n" +
 	"\x06Create\x12\x1a.api.user.v1.CreateRequest\x1a\x1b.api.user.v1.CreateResponse\"\x00\x12O\n" +
 	"\n" +
-	"GetByEmail\x12\x1e.api.user.v1.GetByEmailRequest\x1a\x1f.api.user.v1.GetByEmailResponse\"\x00B0Z.github.com/go-list-templ/proto/gen/api/user/v1b\x06proto3"
+	"GetByEmail\x12\x1e.api.user.v1.GetByEmailRequest\x1a\x1f.api.user.v1.GetByEmailResponse\"\x00\x12O\n" +
+	"\n" +
+	"VerifyCred\x12\x1e.api.user.v1.VerifyCredRequest\x1a\x1f.api.user.v1.VerifyCredResponse\"\x00B0Z.github.com/go-list-templ/proto/gen/api/user/v1b\x06proto3"
 
 var (
 	file_user_v1_user_proto_rawDescOnce sync.Once
@@ -444,7 +547,7 @@ func file_user_v1_user_proto_rawDescGZIP() []byte {
 	return file_user_v1_user_proto_rawDescData
 }
 
-var file_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_user_v1_user_proto_goTypes = []any{
 	(*User)(nil),                  // 0: api.user.v1.User
 	(*ListRequest)(nil),           // 1: api.user.v1.ListRequest
@@ -453,22 +556,26 @@ var file_user_v1_user_proto_goTypes = []any{
 	(*CreateResponse)(nil),        // 4: api.user.v1.CreateResponse
 	(*GetByEmailRequest)(nil),     // 5: api.user.v1.GetByEmailRequest
 	(*GetByEmailResponse)(nil),    // 6: api.user.v1.GetByEmailResponse
-	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
+	(*VerifyCredRequest)(nil),     // 7: api.user.v1.VerifyCredRequest
+	(*VerifyCredResponse)(nil),    // 8: api.user.v1.VerifyCredResponse
+	(*timestamppb.Timestamp)(nil), // 9: google.protobuf.Timestamp
 }
 var file_user_v1_user_proto_depIdxs = []int32{
-	7, // 0: api.user.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	7, // 1: api.user.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	9, // 0: api.user.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	9, // 1: api.user.v1.User.updated_at:type_name -> google.protobuf.Timestamp
 	0, // 2: api.user.v1.ListResponse.users:type_name -> api.user.v1.User
 	0, // 3: api.user.v1.CreateResponse.user:type_name -> api.user.v1.User
 	0, // 4: api.user.v1.GetByEmailResponse.user:type_name -> api.user.v1.User
 	1, // 5: api.user.v1.UserService.List:input_type -> api.user.v1.ListRequest
 	3, // 6: api.user.v1.UserService.Create:input_type -> api.user.v1.CreateRequest
 	5, // 7: api.user.v1.UserService.GetByEmail:input_type -> api.user.v1.GetByEmailRequest
-	2, // 8: api.user.v1.UserService.List:output_type -> api.user.v1.ListResponse
-	4, // 9: api.user.v1.UserService.Create:output_type -> api.user.v1.CreateResponse
-	6, // 10: api.user.v1.UserService.GetByEmail:output_type -> api.user.v1.GetByEmailResponse
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
+	7, // 8: api.user.v1.UserService.VerifyCred:input_type -> api.user.v1.VerifyCredRequest
+	2, // 9: api.user.v1.UserService.List:output_type -> api.user.v1.ListResponse
+	4, // 10: api.user.v1.UserService.Create:output_type -> api.user.v1.CreateResponse
+	6, // 11: api.user.v1.UserService.GetByEmail:output_type -> api.user.v1.GetByEmailResponse
+	8, // 12: api.user.v1.UserService.VerifyCred:output_type -> api.user.v1.VerifyCredResponse
+	9, // [9:13] is the sub-list for method output_type
+	5, // [5:9] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
 	5, // [5:5] is the sub-list for extension extendee
 	0, // [0:5] is the sub-list for field type_name
@@ -487,7 +594,7 @@ func file_user_v1_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_v1_user_proto_rawDesc), len(file_user_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

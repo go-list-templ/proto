@@ -22,6 +22,7 @@ const (
 	UserService_List_FullMethodName       = "/api.user.v1.UserService/List"
 	UserService_Create_FullMethodName     = "/api.user.v1.UserService/Create"
 	UserService_GetByEmail_FullMethodName = "/api.user.v1.UserService/GetByEmail"
+	UserService_VerifyCred_FullMethodName = "/api.user.v1.UserService/VerifyCred"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -31,6 +32,7 @@ type UserServiceClient interface {
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	GetByEmail(ctx context.Context, in *GetByEmailRequest, opts ...grpc.CallOption) (*GetByEmailResponse, error)
+	VerifyCred(ctx context.Context, in *VerifyCredRequest, opts ...grpc.CallOption) (*VerifyCredResponse, error)
 }
 
 type userServiceClient struct {
@@ -71,6 +73,16 @@ func (c *userServiceClient) GetByEmail(ctx context.Context, in *GetByEmailReques
 	return out, nil
 }
 
+func (c *userServiceClient) VerifyCred(ctx context.Context, in *VerifyCredRequest, opts ...grpc.CallOption) (*VerifyCredResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(VerifyCredResponse)
+	err := c.cc.Invoke(ctx, UserService_VerifyCred_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type UserServiceServer interface {
 	List(context.Context, *ListRequest) (*ListResponse, error)
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	GetByEmail(context.Context, *GetByEmailRequest) (*GetByEmailResponse, error)
+	VerifyCred(context.Context, *VerifyCredRequest) (*VerifyCredResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedUserServiceServer) Create(context.Context, *CreateRequest) (*
 }
 func (UnimplementedUserServiceServer) GetByEmail(context.Context, *GetByEmailRequest) (*GetByEmailResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetByEmail not implemented")
+}
+func (UnimplementedUserServiceServer) VerifyCred(context.Context, *VerifyCredRequest) (*VerifyCredResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method VerifyCred not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -172,6 +188,24 @@ func _UserService_GetByEmail_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_VerifyCred_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyCredRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).VerifyCred(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_VerifyCred_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).VerifyCred(ctx, req.(*VerifyCredRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetByEmail",
 			Handler:    _UserService_GetByEmail_Handler,
+		},
+		{
+			MethodName: "VerifyCred",
+			Handler:    _UserService_VerifyCred_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
