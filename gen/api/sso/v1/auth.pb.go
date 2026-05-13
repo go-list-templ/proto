@@ -125,6 +125,102 @@ func (x *RegisterResponse) GetRefreshToken() string {
 	return ""
 }
 
+type RefreshRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RefreshRequest) Reset() {
+	*x = RefreshRequest{}
+	mi := &file_sso_v1_auth_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshRequest) ProtoMessage() {}
+
+func (x *RefreshRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_v1_auth_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshRequest.ProtoReflect.Descriptor instead.
+func (*RefreshRequest) Descriptor() ([]byte, []int) {
+	return file_sso_v1_auth_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RefreshRequest) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+type RefreshResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RefreshResponse) Reset() {
+	*x = RefreshResponse{}
+	mi := &file_sso_v1_auth_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshResponse) ProtoMessage() {}
+
+func (x *RefreshResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_v1_auth_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshResponse.ProtoReflect.Descriptor instead.
+func (*RefreshResponse) Descriptor() ([]byte, []int) {
+	return file_sso_v1_auth_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *RefreshResponse) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *RefreshResponse) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
@@ -135,7 +231,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_sso_v1_auth_proto_msgTypes[2]
+	mi := &file_sso_v1_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -147,7 +243,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_v1_auth_proto_msgTypes[2]
+	mi := &file_sso_v1_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -160,7 +256,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_sso_v1_auth_proto_rawDescGZIP(), []int{2}
+	return file_sso_v1_auth_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LoginRequest) GetEmail() string {
@@ -187,7 +283,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_sso_v1_auth_proto_msgTypes[3]
+	mi := &file_sso_v1_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -199,7 +295,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_v1_auth_proto_msgTypes[3]
+	mi := &file_sso_v1_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -212,7 +308,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_sso_v1_auth_proto_rawDescGZIP(), []int{3}
+	return file_sso_v1_auth_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *LoginResponse) GetAccessToken() string {
@@ -240,15 +336,21 @@ const file_sso_v1_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"Z\n" +
 	"\x10RegisterResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"5\n" +
+	"\x0eRefreshRequest\x12#\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"Y\n" +
+	"\x0fRefreshResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"@\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"W\n" +
 	"\rLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken2\x92\x01\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken2\xd6\x01\n" +
 	"\vAuthService\x12E\n" +
-	"\bRegister\x12\x1b.api.sso.v1.RegisterRequest\x1a\x1c.api.sso.v1.RegisterResponse\x12<\n" +
+	"\bRegister\x12\x1b.api.sso.v1.RegisterRequest\x1a\x1c.api.sso.v1.RegisterResponse\x12B\n" +
+	"\aRefresh\x12\x1a.api.sso.v1.RefreshRequest\x1a\x1b.api.sso.v1.RefreshResponse\x12<\n" +
 	"\x05Login\x12\x18.api.sso.v1.LoginRequest\x1a\x19.api.sso.v1.LoginResponseB/Z-github.com/go-list-templ/proto/gen/api/sso/v1b\x06proto3"
 
 var (
@@ -263,20 +365,24 @@ func file_sso_v1_auth_proto_rawDescGZIP() []byte {
 	return file_sso_v1_auth_proto_rawDescData
 }
 
-var file_sso_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sso_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_sso_v1_auth_proto_goTypes = []any{
 	(*RegisterRequest)(nil),  // 0: api.sso.v1.RegisterRequest
 	(*RegisterResponse)(nil), // 1: api.sso.v1.RegisterResponse
-	(*LoginRequest)(nil),     // 2: api.sso.v1.LoginRequest
-	(*LoginResponse)(nil),    // 3: api.sso.v1.LoginResponse
+	(*RefreshRequest)(nil),   // 2: api.sso.v1.RefreshRequest
+	(*RefreshResponse)(nil),  // 3: api.sso.v1.RefreshResponse
+	(*LoginRequest)(nil),     // 4: api.sso.v1.LoginRequest
+	(*LoginResponse)(nil),    // 5: api.sso.v1.LoginResponse
 }
 var file_sso_v1_auth_proto_depIdxs = []int32{
 	0, // 0: api.sso.v1.AuthService.Register:input_type -> api.sso.v1.RegisterRequest
-	2, // 1: api.sso.v1.AuthService.Login:input_type -> api.sso.v1.LoginRequest
-	1, // 2: api.sso.v1.AuthService.Register:output_type -> api.sso.v1.RegisterResponse
-	3, // 3: api.sso.v1.AuthService.Login:output_type -> api.sso.v1.LoginResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 1: api.sso.v1.AuthService.Refresh:input_type -> api.sso.v1.RefreshRequest
+	4, // 2: api.sso.v1.AuthService.Login:input_type -> api.sso.v1.LoginRequest
+	1, // 3: api.sso.v1.AuthService.Register:output_type -> api.sso.v1.RegisterResponse
+	3, // 4: api.sso.v1.AuthService.Refresh:output_type -> api.sso.v1.RefreshResponse
+	5, // 5: api.sso.v1.AuthService.Login:output_type -> api.sso.v1.LoginResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -293,7 +399,7 @@ func file_sso_v1_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_v1_auth_proto_rawDesc), len(file_sso_v1_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
