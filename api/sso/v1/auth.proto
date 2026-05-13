@@ -14,6 +14,15 @@ message RegisterResponse {
   string refresh_token = 2;
 }
 
+message RefreshRequest {
+  string refresh_token = 1;
+}
+
+message RefreshResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
 message LoginRequest {
   string email = 1;
   string password = 2;
@@ -26,5 +35,6 @@ message LoginResponse {
 
 service AuthService {
   rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Refresh (RefreshRequest) returns (RefreshResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
 }
